@@ -58,9 +58,9 @@ const deleteUser = async (req, res) => {
 //5)GET ALL USERS
 const getAllUsers = async (req, res) => {
   try {
-    console.log(req.query);
+    // console.log(req.query);
 
-    const users = await User.find({  });
+    const users = await User.find({});
     res
       .status(200)
       .json({ status: true, length: users.length, data: { users } });

@@ -5,11 +5,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "A user must have a name"],
     trim: true,
+    unoque: true,
   },
 
   username: {
     type: String,
-    required: [true, "A user must have a name"],
+    required: [true, `A user must have a username`],
+    unique: true,
     trim: true,
   },
 
