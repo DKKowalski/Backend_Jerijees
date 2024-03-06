@@ -9,5 +9,8 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") app.use(morgan("dev"));
 
 app.use("/api/v1.0/users", userRouter);
+app.get("/", (req, res) => {
+  res.status(200).send("It is cold and chilly up here❄️☃️🏂");
+});
 
 module.exports = app;
