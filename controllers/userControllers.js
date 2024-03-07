@@ -70,4 +70,19 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-module.exports = { addUser, getUser, updateUser, deleteUser, getAllUsers };
+//6) USER LOGIN
+const userLogin = async (req, res) => {
+  try {
+    // console.log(req.query);
+    let email = req.body.email
+    let password = req.body.password
+    const users = await User.find({email,password});
+    res
+      .status(200)
+      .json({ status: true, length: users.length, data: { users } });
+  } catch (err) {
+    res.status(404).json({ status: false, message: err });
+  }
+};
+
+module.exports = { addUser, getUser, updateUser, deleteUser, getAllUsers,userLogin };
