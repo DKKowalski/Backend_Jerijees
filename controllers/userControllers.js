@@ -58,7 +58,7 @@ const deleteUser = async (req, res) => {
 //5)GET ALL USERS
 const getAllUsers = async (req, res) => {
   try {
-    // console.log(req.query);
+    console.log(req.query);
     let email = query.email
     let password = query.password
     const users = await User.find({email},{password});
