@@ -69,4 +69,29 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-module.exports = { addUser, getUser, updateUser, deleteUser, getAllUsers };
+//6)GET ALL USERS
+const userLogin = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const users = await User.find({ email, password });
+
+    if (!users.length == 0)
+      return res
+        .status(200)
+        .json({ status: true, length: users.length, data: { users } });
+
+    return res.status(404).json({ status: false, message: `No user found` });
+  } catch (err) {
+    res.status(404).json({ status: false, message: err });
+  }
+};
+
+module.exports = {
+  addUser,
+  getUser,
+  updateUser,
+  deleteUser,
+  getAllUsers,
+  userLogin,
+};
