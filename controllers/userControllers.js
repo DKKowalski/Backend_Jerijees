@@ -59,8 +59,9 @@ const deleteUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
   try {
     // console.log(req.query);
-
-    const users = await User.find({});
+    let email = req.query.email
+    let password = req.query.password
+    const users = await User.find({email,password});
     res
       .status(200)
       .json({ status: true, length: users.length, data: { users } });

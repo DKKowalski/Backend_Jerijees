@@ -13,5 +13,4 @@ Router.route("/:id")
   .get(userControllers.getUser);
 
 Router.route("/login").post(userControllers.userLogin);
-
 module.exports = Router;
