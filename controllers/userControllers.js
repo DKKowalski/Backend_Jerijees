@@ -73,10 +73,11 @@ const getAllUsers = async (req, res) => {
 //6) USER LOGIN
 const userLogin = async (req, res) => {
   try {
-    // console.log(req.query);
+    console.log(req.body);
     let email = req.body.email
     let password = req.body.password
     const users = await User.find({email,password});
+    console.log(users)
     res
       .status(200)
       .json({ status: true, length: users.length, data: { users } });
